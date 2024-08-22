@@ -34,8 +34,6 @@ public final class IO {
         IOBlocks.init(bus);
         IOOtherRegistries.init(bus);
 
-        bus.register(new DatagenDelegator());
-
         bus.addListener(FMLCommonSetupEvent.class, (event) -> {
             IOItems.values().forEach(ItemHolder::triggerRegistrationListener);
             IOBlocks.values().forEach(BlockHolder::triggerRegistrationListener);

@@ -211,3 +211,7 @@ processResources {
     duplicatesStrategy = 'exclude'
     exclude(".cache")
 }
+
+tasks.jar {
+    exclude("**/datagen/**")
+}
