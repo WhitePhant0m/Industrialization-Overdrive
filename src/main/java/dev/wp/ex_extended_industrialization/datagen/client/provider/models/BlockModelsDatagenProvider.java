@@ -1,9 +1,9 @@
 package dev.wp.ex_extended_industrialization.datagen.client.provider.models;
 
-import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
-import net.neoforged.neoforge.data.event.GatherDataEvent;
 import dev.wp.ex_extended_industrialization.ExEI;
 import dev.wp.ex_extended_industrialization.ExEIBlocks;
+import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.swedz.tesseract.neoforge.registry.holder.BlockHolder;
 
 public final class BlockModelsDatagenProvider extends BlockStateProvider {

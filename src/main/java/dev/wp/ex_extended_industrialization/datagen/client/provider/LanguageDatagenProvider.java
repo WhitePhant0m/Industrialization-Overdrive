@@ -1,13 +1,12 @@
 package dev.wp.ex_extended_industrialization.datagen.client.provider;
 
-import aztech.modern_industrialization.MI;
 import aztech.modern_industrialization.machines.recipe.MachineRecipeType;
-import net.neoforged.neoforge.common.data.LanguageProvider;
-import net.neoforged.neoforge.data.event.GatherDataEvent;
 import dev.wp.ex_extended_industrialization.ExEI;
 import dev.wp.ex_extended_industrialization.ExEIItems;
 import dev.wp.ex_extended_industrialization.ExEIMachines;
 import dev.wp.ex_extended_industrialization.ExEIText;
+import net.neoforged.neoforge.common.data.LanguageProvider;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.swedz.tesseract.neoforge.registry.holder.ItemHolder;
 
 import java.util.Map;

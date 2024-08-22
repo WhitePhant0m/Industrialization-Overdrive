@@ -1,5 +1,5 @@
 {
-  "casing": "clean_stainless_steel_machine_casing",
+  "casing": "solid_titanium_machine_casing",
   "default_overlays": {
     "fluid_auto": "modern_industrialization:block/overlays/fluid_auto",
     "front": "ex_extended_industrialization:block/machines/multi_processing_array/overlay_front",

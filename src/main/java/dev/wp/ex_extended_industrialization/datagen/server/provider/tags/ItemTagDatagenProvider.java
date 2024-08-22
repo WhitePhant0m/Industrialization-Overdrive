@@ -1,12 +1,12 @@
 package dev.wp.ex_extended_industrialization.datagen.server.provider.tags;
 
+import dev.wp.ex_extended_industrialization.ExEI;
+import dev.wp.ex_extended_industrialization.ExEIItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
-import dev.wp.ex_extended_industrialization.ExEI;
-import dev.wp.ex_extended_industrialization.ExEIItems;
 import net.swedz.tesseract.neoforge.registry.holder.ItemHolder;
 
 import java.util.Comparator;

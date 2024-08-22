@@ -2,13 +2,13 @@ package dev.wp.ex_extended_industrialization.datagen.api.recipe;
 
 import aztech.modern_industrialization.machines.init.MIMachineRecipeTypes;
 import aztech.modern_industrialization.machines.recipe.MachineRecipeType;
+import dev.wp.ex_extended_industrialization.datagen.api.MachineRecipeBuilderWrapper;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.ItemLike;
-import dev.wp.ex_extended_industrialization.datagen.api.MachineRecipeBuilderWrapper;
 
 public abstract class RecipeBuilder<T extends RecipeBuilder<T>> {
     protected ItemStack result;

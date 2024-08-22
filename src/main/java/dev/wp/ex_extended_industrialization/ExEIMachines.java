@@ -9,7 +9,7 @@ import net.swedz.tesseract.neoforge.compat.mi.hook.context.listener.*;
 import java.util.Map;
 import java.util.function.Function;
 
-import static aztech.modern_industrialization.machines.models.MachineCasings.CLEAN_STAINLESS_STEEL;
+import static aztech.modern_industrialization.machines.models.MachineCasings.SOLID_TITANIUM;
 
 public class ExEIMachines {
     public static void blastFurnaceTiers(BlastFurnaceTiersMIHookContext hook) {
@@ -45,7 +45,7 @@ public class ExEIMachines {
     public static void multiblocks(MultiblockMachinesMIHookContext hook) {
         hook.register(
                 "Multi Processing Array", "multi_processing_array", "multi_processing_array",
-                CLEAN_STAINLESS_STEEL, true, false, false,
+                SOLID_TITANIUM, true, false, false,
                 MultiProcessingArrayBlockEntity::new,
                 (__) -> MultiProcessingArrayBlockEntity.registerReiShapes()
         );

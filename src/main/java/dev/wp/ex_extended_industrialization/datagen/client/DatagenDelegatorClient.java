@@ -1,11 +1,11 @@
 package dev.wp.ex_extended_industrialization.datagen.client;
 
-import net.minecraft.data.DataProvider;
-import net.neoforged.neoforge.data.event.GatherDataEvent;
 import dev.wp.ex_extended_industrialization.ExEI;
 import dev.wp.ex_extended_industrialization.datagen.client.provider.LanguageDatagenProvider;
 import dev.wp.ex_extended_industrialization.datagen.client.provider.models.BlockModelsDatagenProvider;
 import dev.wp.ex_extended_industrialization.datagen.client.provider.models.ItemModelsDatagenProvider;
+import net.minecraft.data.DataProvider;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.swedz.tesseract.neoforge.datagen.mi.MIDatagenHooks;
 
 import java.util.function.Function;

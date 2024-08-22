@@ -4,9 +4,8 @@ import aztech.modern_industrialization.inventory.HackySlot;
 import aztech.modern_industrialization.inventory.SlotGroup;
 import aztech.modern_industrialization.machines.MachineBlock;
 import aztech.modern_industrialization.machines.MachineBlockEntity;
-import aztech.modern_industrialization.machines.blockentities.ElectricCraftingMachineBlockEntity;
 import aztech.modern_industrialization.machines.blockentities.multiblocks.AbstractElectricCraftingMultiblockBlockEntity;
-import aztech.modern_industrialization.machines.blockentities.multiblocks.ElectricCraftingMultiblockBlockEntity;
+import aztech.modern_industrialization.machines.blockentities.multiblocks.FusionReactorBlockEntity;
 import aztech.modern_industrialization.machines.gui.GuiComponent;
 import aztech.modern_industrialization.machines.gui.MachineGuiParameters;
 import dev.wp.ex_extended_industrialization.ExEI;
@@ -17,10 +16,15 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.Set;
 import java.util.function.Supplier;
 
 public final class MultiProcessingArrayMachineSlot {
     public static final ResourceLocation ID = ExEI.id("multi_processing_array_machine_slot");
+
+    private static final Set<Class<? extends AbstractElectricCraftingMultiblockBlockEntity>> EXCLUDED_MACHINES = Set.of(
+            FusionReactorBlockEntity.class
+    );
 
     public static int getSlotX(MachineGuiParameters guiParameters) {
         return guiParameters.backgroundWidth + 6;
@@ -31,9 +35,12 @@ public final class MultiProcessingArrayMachineSlot {
     }
 
     public static boolean isMachine(ItemStack itemStack) {
-        return itemStack.getItem() instanceof BlockItem blockItem &&
+        if (itemStack.getItem() instanceof BlockItem blockItem &&
                 blockItem.getBlock() instanceof MachineBlock machineBlock &&
-                machineBlock.getBlockEntityInstance() instanceof AbstractElectricCraftingMultiblockBlockEntity;
+                machineBlock.getBlockEntityInstance() instanceof AbstractElectricCraftingMultiblockBlockEntity blockEntity) {
+            return !EXCLUDED_MACHINES.contains(blockEntity.getClass());
+        }
+        return false;
     }
 
     public static AbstractElectricCraftingMultiblockBlockEntity getMachine(ItemStack itemStack) {

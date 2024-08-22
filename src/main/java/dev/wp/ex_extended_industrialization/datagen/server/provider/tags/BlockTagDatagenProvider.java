@@ -1,12 +1,12 @@
 package dev.wp.ex_extended_industrialization.datagen.server.provider.tags;
 
+import dev.wp.ex_extended_industrialization.ExEI;
+import dev.wp.ex_extended_industrialization.ExEIBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
-import dev.wp.ex_extended_industrialization.ExEI;
-import dev.wp.ex_extended_industrialization.ExEIBlocks;
 import net.swedz.tesseract.neoforge.registry.holder.BlockHolder;
 
 import java.util.Comparator;

@@ -1,14 +1,14 @@
 package dev.wp.ex_extended_industrialization.compat.mi;
 
 import aztech.modern_industrialization.machines.recipe.MachineRecipeType;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.neoforged.neoforge.registries.DeferredRegister;
 import dev.wp.ex_extended_industrialization.ExEIBlocks;
 import dev.wp.ex_extended_industrialization.ExEIItems;
 import dev.wp.ex_extended_industrialization.ExEIOtherRegistries;
 import dev.wp.ex_extended_industrialization.ExEISortOrder;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.neoforged.neoforge.registries.DeferredRegister;
 import net.swedz.tesseract.neoforge.compat.mi.hook.MIHookRegistry;
 import net.swedz.tesseract.neoforge.compat.mi.hook.TesseractMIHookEntrypoint;
 import net.swedz.tesseract.neoforge.registry.SortOrder;

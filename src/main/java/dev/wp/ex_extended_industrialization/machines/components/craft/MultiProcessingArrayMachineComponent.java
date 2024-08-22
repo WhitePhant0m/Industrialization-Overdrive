@@ -12,7 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
 public final class MultiProcessingArrayMachineComponent implements IComponent.ServerOnly, DropableComponent {
-    public static final ResourceLocation ID = ExEI.id("mb_processing_array_machine");
+    public static final ResourceLocation ID = ExEI.id("multi_processing_array_machine");
 
     private ItemStack machines = ItemStack.EMPTY;
     private MachineRecipeType machineRecipeType;
@@ -42,12 +42,12 @@ public final class MultiProcessingArrayMachineComponent implements IComponent.Se
 
     @Override
     public void writeNbt(CompoundTag tag, HolderLookup.Provider registries) {
-        tag.put("machineStack", machines.saveOptional(registries));
+        tag.put("machinesStack", machines.saveOptional(registries));
     }
 
     @Override
     public void readNbt(CompoundTag tag, HolderLookup.Provider registries, boolean isUpgradingMachine) {
-        machines = ItemStack.parseOptional(registries, tag.getCompound("machineStack"));
+        machines = ItemStack.parseOptional(registries, tag.getCompound("machinesStack"));
         if(!machines.isEmpty()) {
             machineRecipeType = MultiProcessingArrayMachineSlot.getMachine(machines).recipeType();
         }

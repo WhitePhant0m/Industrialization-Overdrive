@@ -1,16 +1,16 @@
 package dev.wp.ex_extended_industrialization.datagen.server;
 
+import dev.wp.ex_extended_industrialization.datagen.server.provider.loottable.BlockLootTableDatagenProvider;
+import dev.wp.ex_extended_industrialization.datagen.server.provider.recipes.CommonRecipesServerDatagenProvider;
+import dev.wp.ex_extended_industrialization.datagen.server.provider.recipes.MachineItemRecipesServerDatagenProvider;
+import dev.wp.ex_extended_industrialization.datagen.server.provider.tags.BlockTagDatagenProvider;
+import dev.wp.ex_extended_industrialization.datagen.server.provider.tags.ItemTagDatagenProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
-import dev.wp.ex_extended_industrialization.datagen.server.provider.loottable.BlockLootTableDatagenProvider;
-import dev.wp.ex_extended_industrialization.datagen.server.provider.recipes.CommonRecipesServerDatagenProvider;
-import dev.wp.ex_extended_industrialization.datagen.server.provider.recipes.MachineItemRecipesServerDatagenProvider;
-import dev.wp.ex_extended_industrialization.datagen.server.provider.tags.BlockTagDatagenProvider;
-import dev.wp.ex_extended_industrialization.datagen.server.provider.tags.ItemTagDatagenProvider;
 
 import java.util.List;
 import java.util.Set;

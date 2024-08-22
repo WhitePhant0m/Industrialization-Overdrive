@@ -15,14 +15,14 @@ import aztech.modern_industrialization.machines.multiblocks.ShapeTemplate;
 import aztech.modern_industrialization.machines.multiblocks.SimpleMember;
 import aztech.modern_industrialization.machines.recipe.MachineRecipeType;
 import com.google.common.collect.Lists;
-import dev.wp.ex_extended_industrialization.ExEITags;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.Mth;
-import net.minecraft.world.level.block.Blocks;
 import dev.wp.ex_extended_industrialization.ExEIConfig;
+import dev.wp.ex_extended_industrialization.ExEITags;
 import dev.wp.ex_extended_industrialization.ExEIText;
 import dev.wp.ex_extended_industrialization.machines.components.craft.MultiProcessingArrayMachineComponent;
 import dev.wp.ex_extended_industrialization.machines.guicomponents.multiprocessingarraymachineslot.MultiProcessingArrayMachineSlot;
+import net.minecraft.network.chat.Component;
+import net.minecraft.util.Mth;
+import net.minecraft.world.level.block.Blocks;
 import net.swedz.tesseract.neoforge.compat.mi.component.craft.multiplied.EuCostTransformer;
 import net.swedz.tesseract.neoforge.compat.mi.component.craft.multiplied.EuCostTransformers;
 import net.swedz.tesseract.neoforge.compat.mi.machine.blockentity.multiblock.multiplied.AbstractElectricMultipliedCraftingMultiblockBlockEntity;
@@ -31,14 +31,14 @@ import net.swedz.tesseract.neoforge.compat.mi.machine.multiblock.members.Predica
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static aztech.modern_industrialization.MITooltips.*;
-import static net.swedz.tesseract.neoforge.compat.mi.builtinhook.TesseractMITooltips.*;
+import static aztech.modern_industrialization.MITooltips.DEFAULT_PARSER;
+import static net.swedz.tesseract.neoforge.compat.mi.builtinhook.TesseractMITooltips.EU_COST_TRANSFORMER_PARSER;
 
 public final class MultiProcessingArrayBlockEntity extends AbstractElectricMultipliedCraftingMultiblockBlockEntity {
     private final MultiProcessingArrayMachineComponent machines;
 
     public MultiProcessingArrayBlockEntity(BEP bep) {
-        super(bep, "mb_processing_array", SHAPE_TEMPLATES, MachineTier.LV);
+        super(bep, "multi_processing_array", SHAPE_TEMPLATES, MachineTier.LV);
 
         if(!ExEIConfig.allowUpgradesInMultiProcessingArray) {
             guiComponents.removeIf((component) -> component instanceof SlotPanel.Server);
@@ -47,7 +47,7 @@ public final class MultiProcessingArrayBlockEntity extends AbstractElectricMulti
         }
 
         this.machines = new MultiProcessingArrayMachineComponent();
-        this.registerComponents();
+        this.registerComponents(machines);
         this.registerGuiComponent(new MultiProcessingArrayMachineSlot.Server(
                 this,
                 () -> this.getMachineStackSize(activeShape.getActiveShapeIndex()),
@@ -91,7 +91,7 @@ public final class MultiProcessingArrayBlockEntity extends AbstractElectricMulti
 
     @Override
     public EuCostTransformer getEuCostTransformer() {
-        return EuCostTransformers.percentage(() -> (float) 1); //TODO: add to config
+        return EuCostTransformers.percentage(() -> (float) ExEIConfig.multiProcessingArrayEuCostMultiplier);
     }
 
     private int getMachineStackSize(int sizeIndex) {
@@ -120,8 +120,8 @@ public final class MultiProcessingArrayBlockEntity extends AbstractElectricMulti
     static {
         SHAPE_TEMPLATES = new ShapeTemplate[SPLIT];
 
-        SimpleMember casing = SimpleMember.forBlock(MIBlock.BLOCK_DEFINITIONS.get(MI.id("clean_stainless_steel_machine_casing")));
-        SimpleMember pipe = SimpleMember.forBlock(MIBlock.BLOCK_DEFINITIONS.get(MI.id("stainless_steel_machine_casing_pipe")));
+        SimpleMember casing = SimpleMember.forBlock(MIBlock.BLOCK_DEFINITIONS.get(MI.id("solid_titanium_machine_casing")));
+        SimpleMember pipe = SimpleMember.forBlock(MIBlock.BLOCK_DEFINITIONS.get(MI.id("titanium_machine_casing_pipe")));
         SimpleMember glass = new PredicateSimpleMember((state) -> state.is(ExEITags.blockCommon("glass_blocks")), Blocks.GLASS);
         HatchFlags front = new HatchFlags.Builder().with(HatchType.ENERGY_INPUT).build();
         HatchFlags top = new HatchFlags.Builder().with(HatchType.ITEM_INPUT, HatchType.FLUID_INPUT).build();
@@ -131,7 +131,7 @@ public final class MultiProcessingArrayBlockEntity extends AbstractElectricMulti
                 i = 0, size = 3, machines = BASE_MACHINES;
                 i < SPLIT && machines <= MAX_MACHINES;
                 i++, size += 2, machines *= MULT_MACHINES){
-            ShapeTemplate.Builder builder = new ShapeTemplate.Builder(MachineCasings.CLEAN_STAINLESS_STEEL);
+            ShapeTemplate.Builder builder = new ShapeTemplate.Builder(MachineCasings.SOLID_TITANIUM);
             for(int z = 0; z < size; z++) {
                 boolean isFront = z == 0;
                 for(int x = -1; x <= 1; x++) {
@@ -151,7 +151,7 @@ public final class MultiProcessingArrayBlockEntity extends AbstractElectricMulti
     public static void registerReiShapes() {
         int index = 0;
         for(ShapeTemplate shapeTemplate : SHAPE_TEMPLATES) {
-            ReiMachineRecipes.registerMultiblockShape("mb_processing_array", shapeTemplate, "" + index);
+            ReiMachineRecipes.registerMultiblockShape("multi_processing_array", shapeTemplate, "" + index);
             index++;
         }
     }

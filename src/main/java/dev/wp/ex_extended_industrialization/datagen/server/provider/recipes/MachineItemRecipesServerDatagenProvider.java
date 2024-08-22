@@ -74,9 +74,9 @@ public final class MachineItemRecipesServerDatagenProvider extends RecipesServer
         addBasicCraftingMachineRecipes(
                 "multi_processing_array",
                 (builder) -> builder
-                        .define('A', "modern_industrialization:robot_arm")
-                        .define('D', "modern_industrialization:digital_circuit")
-                        .define('C', "modern_industrialization:clean_stainless_steel_machine_casing")
+                        .define('A', "modern_industrialization:large_advanced_motor")
+                        .define('D', "modern_industrialization:processing_unit")
+                        .define('C', "modern_industrialization:solid_titanium_machine_casing")
                         .define('S', "modern_industrialization:assembler")
                         .pattern("ADA")
                         .pattern("CSC")

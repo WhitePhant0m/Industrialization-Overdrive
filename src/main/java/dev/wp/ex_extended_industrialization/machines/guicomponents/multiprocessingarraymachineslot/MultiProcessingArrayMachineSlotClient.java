@@ -7,6 +7,7 @@ import aztech.modern_industrialization.machines.gui.GuiComponent;
 import aztech.modern_industrialization.machines.gui.GuiComponentClient;
 import aztech.modern_industrialization.machines.gui.MachineScreen;
 import aztech.modern_industrialization.util.Rectangle;
+import dev.wp.ex_extended_industrialization.ExEIText;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -17,7 +18,6 @@ import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import dev.wp.ex_extended_industrialization.ExEIText;
 
 import java.util.List;
 

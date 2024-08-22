@@ -41,6 +41,12 @@ repositories {
             includeGroup "dev.emi"
         }
     }
+    maven {
+        url "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
     mavenLocal()
     mavenCentral()
 }
@@ -56,6 +62,8 @@ dependencies {
     runtimeOnly "net.swedz:mi-tweaks:${mi_tweaks_version}"
 
     runtimeOnly "net.swedz:extended-industrialization:${extended_industrialization_version}+${minecraft_version}"
+
+    runtimeOnly "curse.maven:jade-324717:5639932"
 }
 
 tasks.named('jar') {

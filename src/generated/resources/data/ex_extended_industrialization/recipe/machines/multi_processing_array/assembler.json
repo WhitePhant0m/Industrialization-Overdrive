@@ -5,11 +5,11 @@
   "item_inputs": [
     {
       "amount": 4,
-      "item": "modern_industrialization:robot_arm"
+      "item": "modern_industrialization:large_advanced_motor"
     },
     {
       "amount": 2,
-      "item": "modern_industrialization:clean_stainless_steel_machine_casing"
+      "item": "modern_industrialization:solid_titanium_machine_casing"
     },
     {
       "amount": 1,
@@ -17,7 +17,7 @@
     },
     {
       "amount": 2,
-      "item": "modern_industrialization:digital_circuit"
+      "item": "modern_industrialization:processing_unit"
     }
   ],
   "item_outputs": [

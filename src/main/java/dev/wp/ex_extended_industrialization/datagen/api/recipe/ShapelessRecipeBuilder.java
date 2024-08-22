@@ -4,6 +4,8 @@ import aztech.modern_industrialization.machines.init.MIMachineRecipeTypes;
 import aztech.modern_industrialization.machines.recipe.MachineRecipeBuilder;
 import aztech.modern_industrialization.machines.recipe.MachineRecipeType;
 import com.google.common.collect.Lists;
+import dev.wp.ex_extended_industrialization.datagen.api.MachineRecipeBuilderWrapper;
+import dev.wp.ex_extended_industrialization.datagen.api.RecipeHelper;
 import net.minecraft.core.NonNullList;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -12,8 +14,6 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.ShapelessRecipe;
 import net.minecraft.world.level.ItemLike;
-import dev.wp.ex_extended_industrialization.datagen.api.MachineRecipeBuilderWrapper;
-import dev.wp.ex_extended_industrialization.datagen.api.RecipeHelper;
 
 import java.util.List;
 

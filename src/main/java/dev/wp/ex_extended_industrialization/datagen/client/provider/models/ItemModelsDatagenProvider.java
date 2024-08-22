@@ -1,10 +1,10 @@
 package dev.wp.ex_extended_industrialization.datagen.client.provider.models;
 
+import dev.wp.ex_extended_industrialization.ExEI;
+import dev.wp.ex_extended_industrialization.ExEIItems;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
-import dev.wp.ex_extended_industrialization.ExEI;
-import dev.wp.ex_extended_industrialization.ExEIItems;
 import net.swedz.tesseract.neoforge.registry.holder.ItemHolder;
 
 public final class ItemModelsDatagenProvider extends ItemModelProvider {

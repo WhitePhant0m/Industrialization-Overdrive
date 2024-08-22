@@ -3,13 +3,13 @@
   "category": "misc",
   "key": {
     "A": {
-      "item": "modern_industrialization:robot_arm"
+      "item": "modern_industrialization:large_advanced_motor"
     },
     "C": {
-      "item": "modern_industrialization:clean_stainless_steel_machine_casing"
+      "item": "modern_industrialization:solid_titanium_machine_casing"
     },
     "D": {
-      "item": "modern_industrialization:digital_circuit"
+      "item": "modern_industrialization:processing_unit"
     },
     "S": {
       "item": "modern_industrialization:assembler"

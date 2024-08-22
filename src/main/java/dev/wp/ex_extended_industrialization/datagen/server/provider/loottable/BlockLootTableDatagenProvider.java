@@ -1,10 +1,10 @@
 package dev.wp.ex_extended_industrialization.datagen.server.provider.loottable;
 
+import dev.wp.ex_extended_industrialization.ExEIBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
-import dev.wp.ex_extended_industrialization.ExEIBlocks;
 import net.swedz.tesseract.neoforge.registry.holder.BlockHolder;
 
 import java.util.Set;
