@@ -1,9 +1,0 @@
-{
-  "block.ex_extended_industrialization.multi_processing_array": "Multi Processing Array",
-  "itemGroup.ex_extended_industrialization.ex_extended_industrialization": "Extended Extended Industrialization",
-  "text.ex_extended_industrialization.multi_processing_array_batch_size": "Batch size is determined by the amount of machines provided to it.",
-  "text.ex_extended_industrialization.multi_processing_array_eu_cost_multiplier": "Runs at %s the EU cost.",
-  "text.ex_extended_industrialization.multi_processing_array_machine_input": "Insert electric crafting multiblocks to run in parallel.",
-  "text.ex_extended_industrialization.multi_processing_array_recipe": "Can run recipes of any electric crafting multiblock provided to it in batches.",
-  "text.ex_extended_industrialization.multi_processing_array_size": "Machines: %d"
-}

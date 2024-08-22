@@ -1,0 +1,9 @@
+{
+  "block.industrialization_overdrive.multi_processing_array": "Multi Processing Array",
+  "itemGroup.industrialization_overdrive.industrialization_overdrive": "Industrialization Overdrive",
+  "text.industrialization_overdrive.multi_processing_array_batch_size": "Batch size is determined by the amount of machines provided to it.",
+  "text.industrialization_overdrive.multi_processing_array_eu_cost_multiplier": "Runs at %s the EU cost.",
+  "text.industrialization_overdrive.multi_processing_array_machine_input": "Insert electric crafting multiblocks to run in parallel.",
+  "text.industrialization_overdrive.multi_processing_array_recipe": "Can run recipes of any electric crafting multiblock provided to it in batches.",
+  "text.industrialization_overdrive.multi_processing_array_size": "Machines: %d"
+}
