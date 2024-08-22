@@ -1,0 +1,205 @@
+plugins {
+    id 'java-library'
+    id 'idea'
+    id 'maven-publish'
+    id 'net.neoforged.moddev' version '1.0.17'
+    id 'com.matthewprenger.cursegradle' version '1.4.0'
+    id 'com.modrinth.minotaur' version '2.+'
+}
+
+version = "${mod_version}+${minecraft_version}"
+group = mod_group_id
+base {
+    archivesName = artifact_name
+}
+
+repositories {
+    maven {
+        name "Modmaven"
+        url "https://modmaven.dev"
+        content {
+            // GrandPower
+            includeGroup "dev.technici4n"
+            // Modern Industrialization
+            includeGroup "aztech"
+            // Tesseract
+            includeGroup "net.swedz"
+        }
+    }
+    maven {
+        name = "shedaniel"
+        url "https://maven.shedaniel.me"
+        content {
+            includeGroup "me.shedaniel.cloth"
+        }
+    }
+    maven {
+        name = "TerraformersMC"
+        url = "https://maven.terraformersmc.com/releases/"
+        content {
+            // EMI
+            includeGroup "dev.emi"
+        }
+    }
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation "aztech:Modern-Industrialization:${modern_industrialization_version}"
+    implementation "dev.technici4n:GrandPower:${grandpower_version}"
+    implementation "me.shedaniel.cloth:cloth-config-neoforge:${cloth_config_version}"
+    implementation "dev.emi:emi-neoforge:${emi_version}+${minecraft_version}"
+    implementation "net.swedz:tesseract-neoforge:${tesseract_version}"
+
+    compileOnly "net.swedz:mi-tweaks:${mi_tweaks_version}"
+    runtimeOnly "net.swedz:mi-tweaks:${mi_tweaks_version}"
+
+    runtimeOnly "net.swedz:extended-industrialization:${extended_industrialization_version}+${minecraft_version}"
+}
+
+tasks.named('jar') {
+    from "LICENSE"
+}
+
+task sourceJar(type: Jar) {
+    archiveClassifier.set("sources")
+    from sourceSets.main.allJava
+    from "LICENSE"
+}
+
+publishing {
+    publications {
+        register('mavenJava', MavenPublication) {
+            from components.java
+            artifactId = project.artifact_name
+
+            artifact(sourceJar) {
+                classifier "sources"
+            }
+        }
+    }
+
+    repositories {
+        mavenLocal()
+
+        maven {
+            credentials {
+                username = System.getenv("MODMAVEN_USERNAME")
+                password = System.getenv("MODMAVEN_PASSWORD")
+            }
+            name = "modmaven"
+            url = "https://modmaven.dev/artifactory/local-releases/"
+        }
+    }
+}
+
+neoForge {
+    version = project.neo_version
+
+    mods {
+        "${mod_id}" {
+            sourceSet sourceSets.main
+        }
+    }
+
+    validateAccessTransformers = true
+    accessTransformers = [
+            "src/main/resources/${mod_id}.accesstransformer.cfg"
+    ]
+
+    runs {
+        configureEach {
+            mods = [neoForge.mods."${mod_id}"]
+            systemProperty 'forge.logging.markers', 'REGISTRIES'
+            systemProperty 'forge.logging.console.level', 'debug'
+
+            sourceSet = project.sourceSets.main
+        }
+
+        client {
+            client()
+
+            gameDirectory.set(project.getLayout().getProjectDirectory().dir('runs/client'))
+
+            programArguments.addAll '--username', 'White_Phant0m', '--uuid', 'f83bd929-fbf0-4186-becb-658d676fcc42'
+
+            systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
+
+            systemProperty 'mixin.env.remapRefMap', 'true'
+            systemProperty 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
+            systemProperty 'mixin.debug.export', 'true'
+            systemProperty 'mixin.debug.verbose', 'true'
+        }
+
+        server {
+            server()
+
+            gameDirectory.set(project.getLayout().getProjectDirectory().dir('runs/server'))
+
+            systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
+            programArgument '--nogui'
+        }
+
+        data {
+            data()
+
+            gameDirectory.set(project.getLayout().getProjectDirectory().dir('runs/data'))
+
+            programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+        }
+    }
+}
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+configurations {
+    runtimeClasspath.extendsFrom localRuntime
+}
+
+tasks.withType(ProcessResources).configureEach {
+    var replaceProperties = [
+            minecraft_version                     : minecraft_version,
+            minecraft_version_range               : minecraft_version_range,
+            neo_version                           : neo_version,
+            neo_version_range                     : neo_version_range,
+            loader_version_range                  : loader_version_range,
+            mod_id                                : mod_id,
+            mod_name                              : mod_name,
+            mod_version                           : version,
+            mod_authors                           : mod_authors,
+            mod_description                       : mod_description,
+            mod_license                           : mod_license,
+            mod_github                            : mod_github,
+            mod_credits                           : mod_credits,
+            modern_industrialization_version_range: modern_industrialization_version_range,
+            tesseract_version_range               : tesseract_version_range,
+            mi_tweaks_version_range               : mi_tweaks_version_range,
+            emi_version_range                     : emi_version_range
+    ]
+    inputs.properties replaceProperties
+
+    filesMatching(['META-INF/neoforge.mods.toml']) {
+        expand replaceProperties
+    }
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+idea {
+    module {
+        downloadSources = true
+        downloadJavadoc = true
+    }
+}
+
+processResources {
+    duplicatesStrategy = 'exclude'
+    exclude(".cache")
+}
