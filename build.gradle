@@ -58,8 +58,8 @@ dependencies {
     implementation "dev.emi:emi-neoforge:${emi_version}+${minecraft_version}"
     implementation "net.swedz:tesseract-neoforge:${tesseract_version}"
 
-    compileOnly "net.swedz:mi-tweaks:${mi_tweaks_version}"
-    runtimeOnly "net.swedz:mi-tweaks:${mi_tweaks_version}"
+    //compileOnly "net.swedz:mi-tweaks:${mi_tweaks_version}"
+    //runtimeOnly "net.swedz:mi-tweaks:${mi_tweaks_version}"
 
     runtimeOnly "net.swedz:extended-industrialization:${extended_industrialization_version}+${minecraft_version}"
 

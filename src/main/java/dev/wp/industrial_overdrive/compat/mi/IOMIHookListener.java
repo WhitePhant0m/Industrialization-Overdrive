@@ -3,11 +3,11 @@ package dev.wp.industrial_overdrive.compat.mi;
 import dev.wp.industrial_overdrive.IOMachines;
 import dev.wp.industrial_overdrive.machines.guicomponents.multiprocessingarraymachineslot.MultiProcessingArrayMachineSlot;
 import dev.wp.industrial_overdrive.machines.guicomponents.multiprocessingarraymachineslot.MultiProcessingArrayMachineSlotClient;
+import net.swedz.tesseract.neoforge.compat.mi.hook.MIHookEntrypoint;
 import net.swedz.tesseract.neoforge.compat.mi.hook.MIHookListener;
-import net.swedz.tesseract.neoforge.compat.mi.hook.TesseractMIHookEntrypoint;
 import net.swedz.tesseract.neoforge.compat.mi.hook.context.listener.*;
 
-@TesseractMIHookEntrypoint
+@MIHookEntrypoint
 public class IOMIHookListener implements MIHookListener {
     @Override
     public void blastFurnaceTiers(BlastFurnaceTiersMIHookContext hook)

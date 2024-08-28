@@ -15,6 +15,7 @@ import aztech.modern_industrialization.machines.multiblocks.ShapeTemplate;
 import aztech.modern_industrialization.machines.multiblocks.SimpleMember;
 import aztech.modern_industrialization.machines.recipe.MachineRecipeType;
 import com.google.common.collect.Lists;
+import dev.wp.industrial_overdrive.IO;
 import dev.wp.industrial_overdrive.IOConfig;
 import dev.wp.industrial_overdrive.IOTags;
 import dev.wp.industrial_overdrive.IOText;
@@ -26,19 +27,19 @@ import net.minecraft.world.level.block.Blocks;
 import net.swedz.tesseract.neoforge.compat.mi.component.craft.multiplied.EuCostTransformer;
 import net.swedz.tesseract.neoforge.compat.mi.component.craft.multiplied.EuCostTransformers;
 import net.swedz.tesseract.neoforge.compat.mi.machine.blockentity.multiblock.multiplied.AbstractElectricMultipliedCraftingMultiblockBlockEntity;
-import net.swedz.tesseract.neoforge.compat.mi.machine.multiblock.members.PredicateSimpleMember;
+import net.swedz.tesseract.neoforge.compat.mi.machine.multiblock.member.PredicateSimpleMember;
 
 import java.util.List;
 import java.util.stream.IntStream;
 
 import static aztech.modern_industrialization.MITooltips.DEFAULT_PARSER;
-import static net.swedz.tesseract.neoforge.compat.mi.builtinhook.TesseractMITooltips.EU_COST_TRANSFORMER_PARSER;
+import static net.swedz.tesseract.neoforge.compat.mi.TesseractMITooltips.EU_COST_TRANSFORMER_PARSER;
 
 public final class MultiProcessingArrayBlockEntity extends AbstractElectricMultipliedCraftingMultiblockBlockEntity {
     private final MultiProcessingArrayMachineComponent machines;
 
     public MultiProcessingArrayBlockEntity(BEP bep) {
-        super(bep, "multi_processing_array", SHAPE_TEMPLATES, MachineTier.LV);
+        super(bep, IO.id("multi_processing_array"), SHAPE_TEMPLATES, MachineTier.LV);
 
         if(!IOConfig.allowUpgradesInMultiProcessingArray) {
             guiComponents.removeIf((component) -> component instanceof SlotPanel.Server);

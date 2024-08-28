@@ -14,7 +14,6 @@ public final class DatagenDelegatorClient {
     public static void configure(GatherDataEvent event) {
         MIDatagenHooks.Client.includeMISprites(event);
 
-        MIDatagenHooks.Client.addLanguageHook(event, IO.ID);
         MIDatagenHooks.Client.addMachineCasingModelsHook(event, IO.ID);
 
         add(event, BlockModelsDatagenProvider::new);
