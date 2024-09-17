@@ -7,6 +7,7 @@ import dev.wp.industrial_overdrive.IOMachines;
 import dev.wp.industrial_overdrive.IOText;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
+import net.swedz.tesseract.neoforge.datagen.mi.MIDatagenHooks;
 import net.swedz.tesseract.neoforge.registry.holder.ItemHolder;
 
 import java.util.Map;
@@ -26,10 +27,7 @@ public final class LanguageDatagenProvider extends LanguageProvider {
             this.add(item.asItem(), item.identifier().englishName());
         }
 
-
-        for (Map.Entry<MachineRecipeType, String> entry : IOMachines.RecipeTypes.getNames().entrySet()) {
-            this.add("recipe_type.%s.%s".formatted(entry.getKey().getId().getNamespace(), entry.getKey().getPath()), entry.getValue());
-        }
+        MIDatagenHooks.Client.withLanguageHook(this, IO.ID);
 
         this.add("itemGroup.%s.%s".formatted(IO.ID, IO.ID), IO.NAME);
     }

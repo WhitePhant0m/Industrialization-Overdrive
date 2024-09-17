@@ -1,6 +1,5 @@
 package dev.wp.industrial_overdrive;
 
-import dev.wp.industrial_overdrive.datagen.DatagenDelegator;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;

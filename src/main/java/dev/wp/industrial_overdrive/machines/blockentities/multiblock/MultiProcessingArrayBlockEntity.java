@@ -1,6 +1,5 @@
 package dev.wp.industrial_overdrive.machines.blockentities.multiblock;
 
-
 import aztech.modern_industrialization.MI;
 import aztech.modern_industrialization.MIBlock;
 import aztech.modern_industrialization.compat.rei.machines.ReiMachineRecipes;
@@ -28,12 +27,12 @@ import net.swedz.tesseract.neoforge.compat.mi.component.craft.multiplied.EuCostT
 import net.swedz.tesseract.neoforge.compat.mi.component.craft.multiplied.EuCostTransformers;
 import net.swedz.tesseract.neoforge.compat.mi.machine.blockentity.multiblock.multiplied.AbstractElectricMultipliedCraftingMultiblockBlockEntity;
 import net.swedz.tesseract.neoforge.compat.mi.machine.multiblock.member.PredicateSimpleMember;
+import net.swedz.tesseract.neoforge.compat.mi.tooltip.MICompatibleTextLine;
 
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static aztech.modern_industrialization.MITooltips.DEFAULT_PARSER;
-import static net.swedz.tesseract.neoforge.compat.mi.TesseractMITooltips.EU_COST_TRANSFORMER_PARSER;
+import static net.swedz.tesseract.neoforge.compat.mi.TesseractMITooltips.*;
 
 public final class MultiProcessingArrayBlockEntity extends AbstractElectricMultipliedCraftingMultiblockBlockEntity {
     private final MultiProcessingArrayMachineComponent machines;
@@ -45,6 +44,7 @@ public final class MultiProcessingArrayBlockEntity extends AbstractElectricMulti
             guiComponents.removeIf((component) -> component instanceof SlotPanel.Server);
             this.registerGuiComponent(new SlotPanel.Server(this)
                     .withRedstoneControl(redstoneControl));
+            //TODO: add Overdrive module after tesseract supports it. .withOverdrive(overdrive)
         }
 
         this.machines = new MultiProcessingArrayMachineComponent();
@@ -102,11 +102,11 @@ public final class MultiProcessingArrayBlockEntity extends AbstractElectricMulti
     @Override
     public List<Component> getTooltips() {
         List<Component> lines = Lists.newArrayList();
-        lines.add(DEFAULT_PARSER.parse(IOText.MULTI_PROCESSING_ARRAY_RECIPE.text()));
-        lines.add(DEFAULT_PARSER.parse(IOText.MULTI_PROCESSING_ARRAY_BATCH_SIZE.text()));
+        lines.add(MICompatibleTextLine.line(IOText.MULTI_PROCESSING_ARRAY_RECIPE));
+        lines.add(MICompatibleTextLine.line(IOText.MULTI_PROCESSING_ARRAY_BATCH_SIZE));
         if(IOConfig.multiProcessingArrayEuCostMultiplier != 1)
         {
-            lines.add(DEFAULT_PARSER.parse(IOText.MULTI_PROCESSING_ARRAY_EU_COST_MULTIPLIER.text(EU_COST_TRANSFORMER_PARSER.parse(this.getEuCostTransformer()))));
+            lines.add(MICompatibleTextLine.line(IOText.MULTI_PROCESSING_ARRAY_EU_COST_MULTIPLIER).arg(this.getEuCostTransformer(), EU_COST_TRANSFORMER_PARSER));
         }
         return lines;
     }
@@ -152,7 +152,7 @@ public final class MultiProcessingArrayBlockEntity extends AbstractElectricMulti
     public static void registerReiShapes() {
         int index = 0;
         for(ShapeTemplate shapeTemplate : SHAPE_TEMPLATES) {
-            ReiMachineRecipes.registerMultiblockShape("multi_processing_array", shapeTemplate, "" + index);
+            ReiMachineRecipes.registerMultiblockShape(IO.id("multi_processing_array"), shapeTemplate, "" + index);
             index++;
         }
     }

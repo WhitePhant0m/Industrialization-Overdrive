@@ -1,9 +1,8 @@
 package dev.wp.industrial_overdrive;
 
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
+import net.swedz.tesseract.neoforge.tooltip.TranslatableTextEnum;
 
-public enum IOText {
+public enum IOText implements TranslatableTextEnum {
     MULTI_PROCESSING_ARRAY_BATCH_SIZE("Batch size is determined by the amount of machines provided to it."),
     MULTI_PROCESSING_ARRAY_EU_COST_MULTIPLIER("Runs at %s the EU cost."),
     MULTI_PROCESSING_ARRAY_MACHINE_INPUT("Insert electric crafting multiblocks to run in parallel."),
@@ -22,13 +21,5 @@ public enum IOText {
 
     public String getTranslationKey() {
         return "text.%s.%s".formatted(IO.ID, this.name().toLowerCase());
-    }
-
-    public MutableComponent text() {
-        return Component.translatable(this.getTranslationKey());
-    }
-
-    public MutableComponent text(Object... args) {
-        return Component.translatable(this.getTranslationKey(), args);
     }
 }
