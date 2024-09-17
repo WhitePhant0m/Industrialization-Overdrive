@@ -31,8 +31,8 @@ public final class MultiProcessingArrayMachineSlot {
     }
 
     public static int getSlotY() {
-        return 86 - (IOConfig.allowUpgradesInMultiProcessingArray ? 0 : 20);
-    } //TODO: 86 -> 106 after tesseract allows for Overdrive modules
+        return 106 - (IOConfig.allowUpgradesInMultiProcessingArray ? 0 : 20);
+    }
 
     public static boolean isMachine(ItemStack itemStack) {
         if (itemStack.getItem() instanceof BlockItem blockItem &&

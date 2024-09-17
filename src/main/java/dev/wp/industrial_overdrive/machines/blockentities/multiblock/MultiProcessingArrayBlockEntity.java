@@ -43,8 +43,8 @@ public final class MultiProcessingArrayBlockEntity extends AbstractElectricMulti
         if(!IOConfig.allowUpgradesInMultiProcessingArray) {
             guiComponents.removeIf((component) -> component instanceof SlotPanel.Server);
             this.registerGuiComponent(new SlotPanel.Server(this)
-                    .withRedstoneControl(redstoneControl));
-            //TODO: add Overdrive module after tesseract supports it. .withOverdrive(overdrive)
+                    .withRedstoneControl(redstoneControl)
+                    .withOverdrive(overdrive));
         }
 
         this.machines = new MultiProcessingArrayMachineComponent();
